@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: website-app
+  labels:
+    app: simple-website
+spec:
+  containers:
+    - name: web-container
+      image: nginx:latest
+      volumeMounts:
+      - mountPath: "/root"
+        name: pv-volume
+  volumes:
+    - name: pv-volume
+      persistentVolumeClaim:
+        claimName: pvc-volume
